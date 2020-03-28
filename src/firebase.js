@@ -1,6 +1,9 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firebase-firestore'
+import * as firebase from 'firebase';
+import {Redirect} from "react-router-dom";
+import React from "react";
 
 const config = {
     apiKey: "AIzaSyAfXTUNR9U2iGBsfQhNnEsd5zqf8GBh4hM",
@@ -26,6 +29,17 @@ class Firebase {
 
 	logout() {
 		return this.auth.signOut()
+	}
+
+	addArticle(article) {
+		if(!this.auth.currentUser) {
+			return <Redirect to="/"/>
+		}
+		return  this.db.collection('/articles').add(article);
+	}
+
+	getArticles() {
+		return  this.db.collection('/articles').get();
 	}
 
 	async register(name, email, password) {
