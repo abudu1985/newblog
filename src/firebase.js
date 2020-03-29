@@ -42,6 +42,17 @@ class Firebase {
 		return  this.db.collection('/articles').get();
 	}
 
+	updateArticle(article) {
+		if(!this.auth.currentUser) {
+			return <Redirect to="/"/>
+		}
+		return this.db.doc(`articles/${article.id}`).set(article)
+	}
+
+	deleteArticle(id) {
+		return this.db.doc(`articles/${id}`).delete();
+	}
+
 	async register(name, email, password) {
 		await this.auth.createUserWithEmailAndPassword(email, password)
 		return this.auth.currentUser.updateProfile({

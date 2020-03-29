@@ -6,6 +6,7 @@ import Routes from 'routes'
 import TopMenu from 'components/topMenu'
 import {CurrentUserProvider} from 'contexts/currentUser'
 import CurrentUserChecker from 'components/currentUserChecker'
+import withToastProvider from "components/Toaster/withToastProvider";
 
 const App = () => {
     return (
@@ -20,4 +21,7 @@ const App = () => {
            )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+//ReactDOM.render(<App />, document.getElementById('root'))
+
+const AppWithToastProvider = withToastProvider(App);
+ReactDOM.render(<AppWithToastProvider />, document.getElementById('root'));
