@@ -43,9 +43,6 @@ class Firebase {
 	}
 
 	updateArticle(article) {
-		if(!this.auth.currentUser) {
-			return <Redirect to="/"/>
-		}
 		return this.db.doc(`articles/${article.id}`).set(article)
 	}
 
