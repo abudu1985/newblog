@@ -1,7 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firebase-firestore'
-import * as firebase from 'firebase';
 import {Redirect} from "react-router-dom";
 import React from "react";
 
